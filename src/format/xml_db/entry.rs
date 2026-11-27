@@ -234,15 +234,20 @@ impl Entry {
     }
 }
 
+/// Errors while unprotecting an entry's values (decoding, decrypting or inflating them)
 #[derive(Debug, Error)]
 #[non_exhaustive]
 pub enum UnprotectError {
+    /// the protected value is not valid base64
     #[error("Error base64 decoding protected value: {0}")]
     Base64(#[from] base64::DecodeError),
 
+    /// the protected value could not be decrypted
     #[error("Error decrypting protected value: {0}")]
     Decrypt(#[from] CryptographyError),
 
+    /// inflating a compressed value failed, including when it exceeds
+    /// [`MAX_DECOMPRESSED_SIZE`](crate::MAX_DECOMPRESSED_SIZE)
     #[error(transparent)]
     Io(#[from] std::io::Error),
 

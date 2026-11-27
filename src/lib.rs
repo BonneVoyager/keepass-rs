@@ -10,6 +10,7 @@ pub(crate) mod format;
 
 mod key;
 
+pub use self::compression::{DECOMPRESSED_SIZE_EXCEEDED, MAX_DECOMPRESSED_SIZE};
 pub use self::db::Database;
 
 #[cfg(feature = "challenge_response")]

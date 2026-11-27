@@ -13,7 +13,7 @@ pub use crate::{
         kdbx3::{Kdbx3OpenError, Kdbx3OuterHeaderError},
         kdbx4::{Kdbx4InnerHeaderError, Kdbx4OpenError, Kdbx4OuterHeaderError},
         variant_dictionary::VariantDictionaryError,
-        xml_db::ParseXmlError,
+        xml_db::{entry::UnprotectError, ParseXmlError},
         DatabaseVersionParseError,
     },
     key::{DatabaseKeyError, ParseXmlKeyFileError},
